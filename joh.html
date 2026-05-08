@@ -7,41 +7,89 @@
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial, sans-serif;
-background:#f6f7fb;
 }
+
+body{
+background:#f5f7fb;
+color:#222;
+}
+
+/* HEADER */
 
 header{
 background:#0b1f4d;
 color:white;
-text-align:center;
 padding:20px;
-font-size:24px;
-font-weight:bold;
+text-align:center;
 }
 
+header h1{
+font-size:30px;
+}
+
+header p{
+opacity:0.8;
+margin-top:5px;
+}
+
+/* NAVIGATION */
+
+nav{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+background:white;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a{
+text-decoration:none;
+background:#0b1f4d;
+color:white;
+padding:8px 14px;
+border-radius:20px;
+font-size:14px;
+}
+
+/* HERO */
+
 .hero{
-background:#2563eb;
+background:linear-gradient(to right,#2563eb,#1d4ed8);
 color:white;
 text-align:center;
 padding:50px 20px;
 }
 
-.hero h1{
-font-size:36px;
+.hero h2{
+font-size:34px;
 margin-bottom:10px;
 }
 
-.hero p{
-font-size:16px;
+/* SECTION */
+
+.section{
+padding:20px;
 }
 
-.container{
-padding:20px;
+.section h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* PRODUCTS */
+
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
 gap:15px;
 }
 
@@ -49,52 +97,93 @@ gap:15px;
 background:white;
 border-radius:12px;
 overflow:hidden;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .card img{
 width:100%;
-height:160px;
+height:170px;
 object-fit:cover;
 }
 
 .card-body{
-padding:10px;
-}
-
-.card h3{
-margin:5px 0;
-font-size:16px;
-}
-
-.card p{
-font-size:13px;
-color:#555;
+padding:12px;
 }
 
 .price{
 color:#2563eb;
 font-weight:bold;
-margin:5px 0;
+margin:8px 0;
 }
 
 .btn{
 display:block;
-text-align:center;
+width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
 background:#0b1f4d;
 color:white;
-padding:10px;
-text-decoration:none;
-border-radius:8px;
+font-weight:bold;
+cursor:pointer;
 margin-top:8px;
 }
 
-footer{
-text-align:center;
+/* LOGIN */
+
+.login-box{
+background:white;
+max-width:350px;
+margin:20px auto;
 padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login-box input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+/* CART */
+
+#cartBox p{
+background:white;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+}
+
+/* TRACKING */
+
+.track-box{
+background:white;
+max-width:400px;
+margin:auto;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.track-box input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* FOOTER */
+
+footer{
 background:#0b1f4d;
 color:white;
-margin-top:20px;
+text-align:center;
+padding:20px;
+margin-top:30px;
 }
 
 </style>
@@ -103,87 +192,292 @@ margin-top:20px;
 <body>
 
 <header>
-JoH Cosmetics
+<h1>JoH Cosmetics ✨</h1>
+<p>Glow • Beauty • Confidence</p>
 </header>
 
+<nav>
+<a href="#products">Products</a>
+<a href="#cart">Cart</a>
+<a href="#tracking">Track Order</a>
+<a href="#login">Login</a>
+</nav>
+
 <section class="hero">
-<h1>Glow Naturally ✨</h1>
-<p>Vipodozi Original • Skincare • Glow • Acne Treatment</p>
+<h2>Premium Skincare Store</h2>
+<p>Original skincare products for glowing skin</p>
 </section>
 
-<section class="container">
+<!-- LOGIN -->
+
+<section class="section" id="login">
+
+<h2>🔐 Login</h2>
+
+<div class="login-box">
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button class="btn" onclick="login()">
+Login
+</button>
+
+<p id="welcome"></p>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<h2>🛍️ Products</h2>
+
+<div class="grid">
 
 <!-- PRODUCT 1 -->
+
 <div class="card">
-<img src="https://i.ibb.co/B5GkXNKx/IMG-20260408-WA0010.jpg">
+
+<img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883">
+
 <div class="card-body">
+
 <h3>Face Wash</h3>
-<p>Safisha uso wako na kuondoa mafuta na uchafu.</p>
-<div class="price">Tsh 18,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
+
+<p>Deep cleansing skincare</p>
+
+<p class="price">Tsh 20,000</p>
+
+<button class="btn"
+onclick="addToCart('Face Wash',20000)">
+Add to Cart
+</button>
+
 </div>
+
 </div>
 
 <!-- PRODUCT 2 -->
+
 <div class="card">
-<img src="https://i.ibb.co/5gcHMz20/IMG-20260408-WA0032.jpg">
+
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348">
+
 <div class="card-body">
+
 <h3>Niacinamide Serum</h3>
-<p>Husaidia kupunguza madoa na kufanya ngozi ing'ae.</p>
-<div class="price">Tsh 25,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
+
+<p>Glow + anti acne serum</p>
+
+<p class="price">Tsh 30,000</p>
+
+<button class="btn"
+onclick="addToCart('Niacinamide Serum',30000)">
+Add to Cart
+</button>
+
 </div>
+
 </div>
 
 <!-- PRODUCT 3 -->
+
 <div class="card">
-<img src="https://i.ibb.co/7J8Mhw00/IMG-20260403-WA0014.jpg">
+
+<img src="https://images.unsplash.com/photo-1617897903246-719242758050">
+
 <div class="card-body">
-<h3>Body Lotion</h3>
-<p>Hulainisha ngozi na kuifanya iwe nyororo.</p>
-<div class="price">Tsh 23,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
-</div>
+
+<h3>Moisturizer</h3>
+
+<p>Hydrating face cream</p>
+
+<p class="price">Tsh 25,000</p>
+
+<button class="btn"
+onclick="addToCart('Moisturizer',25000)">
+Add to Cart
+</button>
+
 </div>
 
-<!-- PRODUCT 4 -->
-<div class="card">
-<img src="https://i.ibb.co/j9scnjxC/IMG-20260323-WA0008-1.jpg">
-<div class="card-body">
-<h3>Sunscreen</h3>
-<p>Hulinda ngozi dhidi ya jua kali.</p>
-<div class="price">Tsh 30,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
-</div>
 </div>
 
-<!-- PRODUCT 5 -->
-<div class="card">
-<img src="https://i.ibb.co/HT88qQxf/IMG-20260406-WA0063.jpg">
-<div class="card-body">
-<h3>Aloe Vera Gel</h3>
-<p>Inatuliza ngozi na kuongeza glow.</p>
-<div class="price">Tsh 12,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
-</div>
 </div>
 
-<!-- PRODUCT 6 -->
-<div class="card">
-<img src="https://i.ibb.co/G3JwKGVv/IMG-20260331-WA0006.jpg">
-<div class="card-body">
-<h3>CeraVe Cleanser</h3>
-<p>Usafishaji wa ngozi wa kina bila kukausha.</p>
-<div class="price">Tsh 35,000</div>
-<a class="btn" href="https://wa.me/255677544659">Order WhatsApp</a>
-</div>
+</section>
+
+<!-- CART -->
+
+<section class="section" id="cart">
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartBox"></div>
+
+<h3 id="total">Total: Tsh 0</h3>
+
+<button class="btn" onclick="checkout()">
+Checkout via WhatsApp
+</button>
+
+</section>
+
+<!-- TRACK ORDER -->
+
+<section class="section" id="tracking">
+
+<h2>📦 Order Tracking</h2>
+
+<div class="track-box">
+
+<input type="text" id="trackId"
+placeholder="Enter Order ID">
+
+<button class="btn"
+onclick="trackOrder()">
+Track Order
+</button>
+
+<p id="trackResult"></p>
+
 </div>
 
 </section>
 
 <footer>
-© 2026 JoH Cosmetics | Dar es Salaam
+© 2026 JoH Cosmetics | Premium Skincare Brand
 </footer>
+
+<script>
+
+/* LOGIN */
+
+function login(){
+
+let user =
+document.getElementById("username").value;
+
+localStorage.setItem("user", user);
+
+document.getElementById("welcome").innerHTML =
+"Welcome " + user + " 👋";
+
+}
+
+/* CART SYSTEM */
+
+let cart = [];
+
+function addToCart(name, price){
+
+cart.push({name, price});
+
+alert(name + " added to cart 🛒");
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let cartBox =
+document.getElementById("cartBox");
+
+cartBox.innerHTML = "";
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+total += item.price;
+
+cartBox.innerHTML += `
+<p>
+${item.name} - Tsh ${item.price}
+
+<button onclick="removeItem(${index})">
+❌
+</button>
+
+</p>
+`;
+
+});
+
+document.getElementById("total").innerHTML =
+"Total: Tsh " + total;
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+/* CHECKOUT */
+
+function checkout(){
+
+let message =
+"Hello JoH Cosmetics,%0A";
+
+message += "I want to order:%0A";
+
+cart.forEach(item=>{
+
+message +=
+"- " + item.name +
+" Tsh " + item.price + "%0A";
+
+});
+
+window.location.href =
+"https://wa.me/255677544659?text=" + message;
+
+}
+
+/* TRACKING */
+
+function trackOrder(){
+
+let id =
+document.getElementById("trackId").value;
+
+if(id == "JOH123"){
+
+document.getElementById("trackResult")
+.innerHTML =
+"📦 Your order is being prepared";
+
+}
+
+else if(id == "JOH456"){
+
+document.getElementById("trackResult")
+.innerHTML =
+"🚚 Your order is on delivery";
+
+}
+
+else{
+
+document.getElementById("trackResult")
+.innerHTML =
+"❌ Order not found";
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
